@@ -1,17 +1,56 @@
 ---
 import bg from '../assets/freesia_background.svg';
 import flower from '../assets/g11.svg';
+import bandcomp from './bandcomp.svelte';
+import arrow from '../assets/arrow.svg';
+import { logoTransition } from '../lib/animations';
 ---
 
 <div class="flex items-center justify-center h-screen w-full">
     <main>
-      <div class="relative">
+      <!--LOAD SCRIPT-->
+      <bandcomp client:load />
+
+
+      <!--Island Component-->
+      <div class="relative select-none">
+
+        <div >
         <img src={bg.src} alt="background highlight">
-        <div class="absolute inset-0 flex flex-col items-center justify-center ">
-            <img src = {flower.src} alt = "flower"></img>
-          <h1 class="text-8xl text-white font-bold text-center">Freesia</h1>
-          <h2 class="text-6xl text-white font-bold text-center">Band</h2>
         </div>
+
+
+
+        <button 
+        id="top-left-arrow"
+        class="absolute hover:scale-125 transition-transform top-0.5 left-0.5"
+        aria-label="Navigate to section"
+        >
+        <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
+        </button>
+        
+        <button 
+        id="top-right-arrow"
+        class="absolute hover:scale-125 transition-transform top-0.5 right-0.5 rotate-80"
+        aria-label="Navigate to section"
+        >
+        <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
+        </button>
+
+        <button 
+        id="bottom-arrow"
+        class="absolute hover:scale-125 transition-transform -bottom-16 left-1/2 transform -translate-x-1/2  rotate-220"
+        aria-label="Navigate to section"
+        >
+        <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
+        </button>
+
+          
+
+
+        </div>
+
+        
       </div>
     </main>
   </div>
