@@ -3,7 +3,7 @@ import bg from '../assets/freesia_background.svg';
 import flower from '../assets/g11.svg';
 import Island from './island.svelte';
 import arrow from '../assets/arrow.svg';
-import Ismael from './Ismael.astro';
+import Ismael from './band-members/Ismael.astro';
 ---
 
 <div>
@@ -62,6 +62,18 @@ import { WatchDirectoryFlags } from "typescript";
     const arrow2 = document.getElementById('top-right-arrow');
     const arrow3 = document.getElementById('bottom-arrow');
     const Ismael = document.getElementById('background-content');
+    //const Julian;
+    //const Usman;
+
+    const line = document.getElementById('animated-line');
+
+
+
+
+
+
+
+
     if (islandComponent && bandcomp) {
       
       const observer = new MutationObserver(() => {
@@ -82,12 +94,14 @@ import { WatchDirectoryFlags } from "typescript";
             (arrow2 as HTMLElement).style.opacity = '100';
             (arrow3 as HTMLElement).style.opacity = '100';
             (Ismael as HTMLElement).classList.replace('opacity-100', 'opacity-0');
+            (line as HTMLElement).classList.replace('w-screen', 'w-0');
             break;
           case '1':
             (arrow1 as HTMLElement).style.opacity = '100';
             (arrow2 as HTMLElement).style.opacity = '0';
             (arrow3 as HTMLElement).style.opacity = '0';
             (Ismael as HTMLElement).classList.replace('opacity-0', 'opacity-100');
+            (line as HTMLElement).classList.replace('w-0', 'w-screen');
             break;
           case '2':
             (arrow1 as HTMLElement).style.opacity = '0';
