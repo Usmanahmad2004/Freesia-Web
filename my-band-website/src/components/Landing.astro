@@ -14,12 +14,12 @@ import ismael from './Ismael.astro';
     <!-- Island Component -->
     <div id="island-component" class="fixed flex items-center justify-center h-screen w-full select-none transition-all duration-1500 ease-in-out">
       <div>
-        <img src={bg.src} alt="background highlight">
+        <img src={bg.src} alt="background highlight" class= "scale-80">
       </div>
       
       <button
         id="top-left-arrow"
-        class="absolute hover:scale-125 transition duration-1000 ease-in-out -translate-x-65 -translate-y-40 "
+        class="absolute hover:scale-125 transition duration-1000 ease-in-out -translate-x-55 -translate-y-30 "
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -27,7 +27,7 @@ import ismael from './Ismael.astro';
       
       <button
         id="top-right-arrow"
-        class="absolute hover:scale-125 transition duration-1000 translate-x-65 -translate-y-40 rotate-80"
+        class="absolute hover:scale-125 transition duration-1000 translate-x-55 -translate-y-30 rotate-80"
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -35,7 +35,7 @@ import ismael from './Ismael.astro';
       
       <button
         id="bottom-arrow"
-        class="absolute hover:scale-125 transition duration-1000 translate-y-60 rotate-220"
+        class="absolute hover:scale-125 transition duration-1000 translate-y-45 rotate-220"
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -67,7 +67,7 @@ import ismael from './Ismael.astro';
         const tag = bandcomp.getAttribute('data-tag');
         
         if (clicked === 'true') {
-          islandComponent.style.transform = `translate(${x}px, ${y}px)`;
+          islandComponent.style.transform = `translate(${x * window.innerWidth / 2}px, ${y * window.innerHeight / 2}px)`;
         } else {
           islandComponent.style.transform = 'translate(0px, 0px)';
         }

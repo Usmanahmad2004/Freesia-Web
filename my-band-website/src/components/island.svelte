@@ -8,7 +8,8 @@
   let clicked = false;
   let tag = '0';
   let islandPosition = { x: 0, y: 0 };
-
+  //const windowWidth = window.innerWidth;
+  //const windowHeight = window.innerHeight;
  
   function handleTopLeftClick() {
     
@@ -18,7 +19,7 @@
     
     if (clicked) {
       tag = '1';
-      islandPosition = { x: 900, y: 300 };
+      islandPosition = { x: .6, y: .6};
     } else {
       tag = '0';
       islandPosition = { x: 0, y: 0 };
@@ -32,7 +33,7 @@
     
     if (clicked) {
       tag = '2';
-      islandPosition = { x: -900, y: 300 };
+      islandPosition = { x: -.6, y: .6 };
     } else {
       tag = '0';
       islandPosition = { x: 0, y: 0 };
@@ -46,7 +47,7 @@
     
     if (clicked) {
       tag = '3';
-      islandPosition = { x: 0, y: -400 };
+      islandPosition = { x: 0, y: -.6 };
     } else {
       tag = '0';
       islandPosition = { x: 0, y: 0 };
