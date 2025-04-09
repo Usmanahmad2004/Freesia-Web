@@ -1,64 +1,81 @@
 <script lang="ts">
-    import {onMount} from 'svelte';
-    import {fade, fly} from 'svelte/transition';
-    import {cubicOut} from 'svelte/easing';
+  import { fly } from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
+  import { isLabeledStatement } from 'typescript';
+
+ 
+  let clicked = false;
+  let tag = '0';
+  let islandPosition = { x: 0, y: 0 };
+
+ 
+  function handleTopLeftClick() {
     
-
-
-    type Position = 'top-left' | 'top-right' | 'bottom';
-    type SectionID = 'guitar' | 'bass' | 'drums' | null;
-
-
-    interface BandMembers {
-        id: 'guitar' | 'bass' | 'drums';
-        name: string;
-        instrument: string;
-        position: Position;
-
+    console.log("Top left arrow clicked. Gliding content out.");
+    clicked = !clicked;
+    
+    
+    if (clicked) {
+      tag = '1';
+      islandPosition = { x: 900, y: 300 };
+    } else {
+      tag = '0';
+      islandPosition = { x: 0, y: 0 };
     }
-
-    //variables
-    let active: SectionID = null;
-    let showMain: boolean = true;
-    let mounted: boolean = false;
-
-    // Band members data
-  const bandMembers: BandMembers[] = [
-    { 
-      id: 'guitar', 
-      name: 'Ismael', 
-      instrument: 'Guitar',
-      position: 'top-left'
-    },
-    { 
-      id: 'bass', 
-      name: 'Julian', 
-      instrument: 'Bass',
-      position: 'top-right'
-    },
-    { 
-      id: 'drums', 
-      name: 'Usman', 
-      instrument: 'Drums',
-      position: 'bottom'
+  }
+  function handleTopRightClick() {
+    
+    console.log("Top right arrow clicked. Gliding content out.");
+    clicked = !clicked;
+    
+    
+    if (clicked) {
+      tag = '2';
+      islandPosition = { x: -900, y: 300 };
+    } else {
+      tag = '0';
+      islandPosition = { x: 0, y: 0 };
     }
-  ];
-
-  // Navigate to a section when arrow is clicked
-  function navigateToSection(sectionId: 'guitar' | 'bass' | 'drums'): void {
-    showMain= false;
-    active= sectionId;
   }
-
-  // Return to main view
-  function returnToMain(): void {
-    active = null;
-    showMain = true;
+  function handleBottomClick() {
+   
+    console.log("bottom arrow clicked. Gliding content out.");
+    clicked = !clicked;
+    
+    
+    if (clicked) {
+      tag = '3';
+      islandPosition = { x: 0, y: -400 };
+    } else {
+      tag = '0';
+      islandPosition = { x: 0, y: 0 };
+    }
   }
+  
 
   onMount(() => {
-    mounted = true;
+    const tlbtn = document.getElementById("top-left-arrow");
+    const trbtn = document.getElementById("top-right-arrow");
+    const btmbtn = document.getElementById("bottom-arrow");
+    
+
+    if (tlbtn) {
+      tlbtn.addEventListener("click", handleTopLeftClick);
+      console.log("Listener attached to 'top-left-arrow'");
+    } 
+    if (trbtn) {
+      trbtn.addEventListener("click", handleTopRightClick);
+      console.log("Listener attached to 'top-left-arrow'");
+    } 
+    if (btmbtn) {
+      btmbtn.addEventListener("click", handleBottomClick);
+      console.log("Listener attached to 'top-left-arrow'");
+    } 
+    
+    
+    
   });
-
-
 </script>
+
+<div style="display: none;" data-island-x={islandPosition.x} data-island-y={islandPosition.y} data-clicked={clicked} data-tag={tag}></div>
