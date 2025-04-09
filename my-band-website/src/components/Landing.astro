@@ -3,7 +3,7 @@ import bg from '../assets/freesia_background.svg';
 import flower from '../assets/g11.svg';
 import Island from './island.svelte';
 import arrow from '../assets/arrow.svg';
-import ismael from './Ismael.astro';
+import Ismael from './Ismael.astro';
 ---
 
 <div>
@@ -11,6 +11,7 @@ import ismael from './Ismael.astro';
     <!-- Load the Svelte component -->
     <Island client:load />
     
+    <Ismael />
     <!-- Island Component -->
     <div id="island-component" class="fixed flex items-center justify-center h-screen w-full select-none transition-all duration-1500 ease-in-out">
       <div>
@@ -19,7 +20,7 @@ import ismael from './Ismael.astro';
       
       <button
         id="top-left-arrow"
-        class="absolute hover:scale-125 transition duration-1000 ease-in-out -translate-x-55 -translate-y-30 "
+        class="absolute scale:90 hover:scale-110 transition duration-1000 ease-in-out -translate-x-55 -translate-y-30 "
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -27,7 +28,7 @@ import ismael from './Ismael.astro';
       
       <button
         id="top-right-arrow"
-        class="absolute hover:scale-125 transition duration-1000 translate-x-55 -translate-y-30 rotate-80"
+        class="absolute scale:90 hover:scale-110  transition duration-1000 translate-x-55 -translate-y-30 rotate-80"
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -35,7 +36,7 @@ import ismael from './Ismael.astro';
       
       <button
         id="bottom-arrow"
-        class="absolute hover:scale-125 transition duration-1000 translate-y-45 rotate-220"
+        class="absolute scale:90 hover:scale-110  transition duration-1000 translate-y-45 rotate-220"
         aria-label="Navigate to section"
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
@@ -51,6 +52,8 @@ import ismael from './Ismael.astro';
 </div>
 
 <script>
+import { WatchDirectoryFlags } from "typescript";
+
   document.addEventListener('DOMContentLoaded', () => {
     
     const islandComponent = document.getElementById('island-component');
@@ -58,6 +61,7 @@ import ismael from './Ismael.astro';
     const arrow1 = document.getElementById('top-left-arrow');
     const arrow2 = document.getElementById('top-right-arrow');
     const arrow3 = document.getElementById('bottom-arrow');
+    const Ismael = document.getElementById('background-content');
     if (islandComponent && bandcomp) {
       
       const observer = new MutationObserver(() => {
@@ -77,11 +81,13 @@ import ismael from './Ismael.astro';
             (arrow1 as HTMLElement).style.opacity = '100';
             (arrow2 as HTMLElement).style.opacity = '100';
             (arrow3 as HTMLElement).style.opacity = '100';
+            (Ismael as HTMLElement).classList.replace('opacity-100', 'opacity-0');
             break;
           case '1':
             (arrow1 as HTMLElement).style.opacity = '100';
             (arrow2 as HTMLElement).style.opacity = '0';
             (arrow3 as HTMLElement).style.opacity = '0';
+            (Ismael as HTMLElement).classList.replace('opacity-0', 'opacity-100');
             break;
           case '2':
             (arrow1 as HTMLElement).style.opacity = '0';
