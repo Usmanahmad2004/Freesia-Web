@@ -1,14 +1,15 @@
 ---
 import bg from '../assets/freesia_background.svg';
 import flower from '../assets/g11.svg';
-import Bandcomp from './bandcomp.svelte';
+import Island from './island.svelte';
 import arrow from '../assets/arrow.svg';
+import ismael from './Ismael.astro';
 ---
 
 <div>
   <main>
     <!-- Load the Svelte component -->
-    <Bandcomp client:load />
+    <Island client:load />
     
     <!-- Island Component -->
     <div id="island-component" class="fixed flex items-center justify-center h-screen w-full select-none transition-all duration-1500 ease-in-out">
@@ -39,7 +40,13 @@ import arrow from '../assets/arrow.svg';
       >
         <img src={arrow.src} alt="Arrow" class="w-12 h-12" />
       </button>
+
+       
     </div>
+
+    
+    
+
   </main>
 </div>
 
