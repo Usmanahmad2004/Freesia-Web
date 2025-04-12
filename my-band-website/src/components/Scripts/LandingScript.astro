@@ -1,0 +1,76 @@
+<script>
+    import { WatchDirectoryFlags } from "typescript";
+    
+      document.addEventListener('DOMContentLoaded', () => {
+        
+        const islandComponent = document.getElementById('island-component');
+        const bandcomp = document.querySelector('[data-island-x]');
+        const arrow1 = document.getElementById('top-left-arrow');
+        const arrow2 = document.getElementById('top-right-arrow');
+        const arrow3 = document.getElementById('bottom-arrow');
+        const Ismael = document.getElementById('background-content-I');
+        const Julian = document.getElementById('background-content-J');
+        //const Usman;
+    
+        const line = document.getElementById('animated-line');
+    
+    
+    
+    
+    
+    
+    
+    
+        if (islandComponent && bandcomp) {
+          
+          const observer = new MutationObserver(() => {
+            const x = bandcomp.getAttribute('data-island-x');
+            const y = bandcomp.getAttribute('data-island-y');
+            const clicked = bandcomp.getAttribute('data-clicked');
+            const tag = bandcomp.getAttribute('data-tag');
+            
+            if (clicked === 'true') {
+              islandComponent.style.transform = `translate(${x * window.innerWidth / 2}px, ${y * window.innerHeight / 2}px)`;
+            } else {
+              islandComponent.style.transform = 'translate(0px, 0px)';
+            }
+    
+            switch(tag) {
+              case '0':
+                (arrow1 as HTMLElement).style.opacity = '100';
+                (arrow2 as HTMLElement).style.opacity = '100';
+                (arrow3 as HTMLElement).style.opacity = '100';
+                (Ismael as HTMLElement).classList.replace('opacity-100', 'opacity-0');
+                (Julian as HTMLElement).classList.replace('opacity-100', 'opacity-0');
+                (line as HTMLElement).classList.replace('w-screen', 'w-0');
+                break;
+              case '1':
+                (arrow1 as HTMLElement).style.opacity = '100';
+                (arrow2 as HTMLElement).style.opacity = '0';
+                (arrow3 as HTMLElement).style.opacity = '0';
+                (Ismael as HTMLElement).classList.replace('opacity-0', 'opacity-100');
+                (line as HTMLElement).classList.replace('w-0', 'w-screen');
+                break;
+              case '2':
+                (arrow1 as HTMLElement).style.opacity = '0';
+                (arrow2 as HTMLElement).style.opacity = '100';
+                (arrow3 as HTMLElement).style.opacity = '0';
+                (Julian as HTMLElement).classList.replace('opacity-0', 'opacity-100');
+                
+                break;
+              case '3':
+                (arrow1 as HTMLElement).style.opacity = '0';
+                (arrow2 as HTMLElement).style.opacity = '0';
+                (arrow3 as HTMLElement).style.opacity = '100';
+                break;
+    
+    
+            }
+    
+          });
+          
+    
+          observer.observe(bandcomp, { attributes: true });
+        }
+      });
+    </script>
